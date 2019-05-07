@@ -1,0 +1,90 @@
+{
+    "title": "MLB v3 RotoBaller Premium News",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/fantasydata.net/mlb-v3-rotoballer-premium-news/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://api.fantasydata.net/v3/mlb/news-rotoballer",
+                    "https://api.fantasydata.net/v3/mlb/news-rotoballer",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "apiKeyHeader": {
+                "label": "Ocp-Apim-Subscription-Key (apiKeyHeader)",
+                "viewClass": "TextFieldView"
+            },
+            "apiKeyQuery": {
+                "label": "subscription-key (apiKeyQuery)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "PremiumNews": {
+            "main": "./lib/actions/PremiumNews.js",
+            "title": "Premium News",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PremiumNews.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PremiumNewsByDate": {
+            "main": "./lib/actions/PremiumNewsByDate.js",
+            "title": "Premium News by Date",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PremiumNewsByDate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PremiumNewsByPlayer": {
+            "main": "./lib/actions/PremiumNewsByPlayer.js",
+            "title": "Premium News by Player",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PremiumNewsByPlayer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
